@@ -1,0 +1,1327 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pose Virtuosa — Marketing que Posiciona e Vende</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400;1,600&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --blue: #2B35C8;
+  --blue-dark: #1E28A0;
+  --blue-mid: #3D48D4;
+  --blue-pale: rgba(43,53,200,0.07);
+  --gray: #A7A8AA;
+  --gray-light: #E8E8E9;
+  --black: #0A0A0B;
+  --white: #FFFFFF;
+  --off: #F7F7F8;
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  background: var(--white);
+  color: var(--black);
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 300;
+  overflow-x: hidden;
+}
+
+/* ─── SCROLLBAR ─── */
+::-webkit-scrollbar { width: 3px; }
+::-webkit-scrollbar-track { background: var(--black); }
+::-webkit-scrollbar-thumb { background: var(--blue); }
+
+/* ─── NAV ─── */
+nav {
+  position: fixed; top: 0; left: 0; right: 0;
+  z-index: 200;
+  padding: 0 48px;
+  height: 64px;
+  display: flex; align-items: center; justify-content: space-between;
+  transition: background 0.4s ease, box-shadow 0.4s ease;
+}
+
+nav.scrolled {
+  background: rgba(10,10,11,0.95);
+  backdrop-filter: blur(12px);
+  box-shadow: 0 1px 0 rgba(255,255,255,0.06);
+}
+
+.nav-logo {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1rem; font-weight: 600;
+  letter-spacing: 4px; text-transform: uppercase;
+  color: var(--white); text-decoration: none;
+  display: flex; align-items: center; gap: 10px;
+}
+
+.nav-logo-symbol {
+  width: 28px; height: 28px;
+}
+
+.nav-links {
+  display: flex; gap: 32px; list-style: none;
+}
+
+.nav-links a {
+  font-size: 10px; font-weight: 500;
+  letter-spacing: 2px; text-transform: uppercase;
+  color: rgba(255,255,255,0.5);
+  text-decoration: none; transition: color 0.25s;
+}
+
+.nav-links a:hover { color: var(--white); }
+
+.nav-cta {
+  font-size: 10px; font-weight: 600;
+  letter-spacing: 2px; text-transform: uppercase;
+  color: var(--white);
+  background: var(--blue);
+  padding: 10px 20px;
+  text-decoration: none;
+  transition: background 0.25s;
+  border: none; cursor: pointer;
+}
+
+.nav-cta:hover { background: var(--blue-mid); }
+
+.nav-toggle {
+  display: none;
+  background: none; border: none;
+  color: var(--white); cursor: pointer;
+  font-size: 20px;
+}
+
+/* ─── HERO ─── */
+.hero {
+  background: var(--black);
+  min-height: 100vh;
+  display: flex; flex-direction: column;
+  justify-content: flex-end;
+  padding: 0 64px 80px;
+  position: relative; overflow: hidden;
+}
+
+.hero-bg {
+  position: absolute; inset: 0;
+  background:
+    radial-gradient(ellipse at 70% 30%, rgba(43,53,200,0.18) 0%, transparent 55%),
+    radial-gradient(ellipse at 20% 80%, rgba(43,53,200,0.08) 0%, transparent 45%);
+}
+
+.hero-grid-lines {
+  position: absolute; inset: 0;
+  background-image:
+    linear-gradient(rgba(255,255,255,0.02) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,0.02) 1px, transparent 1px);
+  background-size: 80px 80px;
+}
+
+.hero-symbol {
+  position: absolute;
+  right: -80px; top: 50%;
+  transform: translateY(-50%);
+  width: 600px; height: 600px;
+  opacity: 0.04;
+}
+
+.hero-eyebrow {
+  font-size: 10px; font-weight: 500;
+  letter-spacing: 5px; text-transform: uppercase;
+  color: var(--blue); margin-bottom: 28px;
+  position: relative; z-index: 1;
+  animation: fadeUp 1s ease 0.2s both;
+}
+
+.hero h1 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(3.5rem, 9vw, 8rem);
+  font-weight: 300; color: var(--white);
+  line-height: 0.95; letter-spacing: -1px;
+  position: relative; z-index: 1;
+  animation: fadeUp 1s ease 0.4s both;
+}
+
+.hero h1 em {
+  font-style: italic;
+  color: rgba(255,255,255,0.35);
+}
+
+.hero h1 .highlight {
+  display: block;
+  background: linear-gradient(135deg, var(--blue) 0%, #6B7FFF 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.hero-divider {
+  width: 60px; height: 1px;
+  background: rgba(255,255,255,0.15);
+  margin: 36px 0; position: relative; z-index: 1;
+  animation: fadeUp 1s ease 0.6s both;
+}
+
+.hero-desc {
+  font-size: 14px; color: rgba(255,255,255,0.45);
+  max-width: 480px; line-height: 1.9;
+  position: relative; z-index: 1;
+  animation: fadeUp 1s ease 0.7s both;
+  margin-bottom: 40px;
+}
+
+.hero-actions {
+  display: flex; gap: 16px; flex-wrap: wrap;
+  position: relative; z-index: 1;
+  animation: fadeUp 1s ease 0.9s both;
+}
+
+.btn-primary {
+  background: var(--blue); color: var(--white);
+  padding: 16px 32px;
+  font-size: 11px; font-weight: 600;
+  letter-spacing: 2px; text-transform: uppercase;
+  text-decoration: none; transition: all 0.25s ease;
+  display: inline-flex; align-items: center; gap: 10px;
+  border: none; cursor: pointer; font-family: 'Montserrat', sans-serif;
+}
+
+.btn-primary:hover {
+  background: var(--blue-mid);
+  transform: translateY(-2px);
+  box-shadow: 0 12px 32px rgba(43,53,200,0.35);
+}
+
+.btn-secondary {
+  background: transparent;
+  color: rgba(255,255,255,0.6);
+  padding: 16px 32px;
+  font-size: 11px; font-weight: 500;
+  letter-spacing: 2px; text-transform: uppercase;
+  text-decoration: none; transition: all 0.25s ease;
+  border: 1px solid rgba(255,255,255,0.15);
+  display: inline-flex; align-items: center; gap: 10px;
+}
+
+.btn-secondary:hover {
+  border-color: rgba(255,255,255,0.4);
+  color: var(--white);
+}
+
+.hero-scroll {
+  position: absolute; right: 64px; bottom: 80px;
+  writing-mode: vertical-rl;
+  font-size: 9px; font-weight: 500;
+  letter-spacing: 3px; text-transform: uppercase;
+  color: rgba(255,255,255,0.2);
+  display: flex; align-items: center; gap: 12px;
+  z-index: 1;
+}
+
+.hero-scroll::after {
+  content: '';
+  width: 1px; height: 48px;
+  background: rgba(255,255,255,0.15);
+}
+
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(24px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* ─── STATEMENT BAR ─── */
+.statement-bar {
+  background: var(--blue);
+  padding: 20px 64px;
+  display: flex; align-items: center; justify-content: center;
+  gap: 40px; flex-wrap: wrap;
+}
+
+.sb-item {
+  font-size: 10px; font-weight: 600;
+  letter-spacing: 3px; text-transform: uppercase;
+  color: rgba(255,255,255,0.7);
+  display: flex; align-items: center; gap: 12px;
+}
+
+.sb-item::before {
+  content: '';
+  width: 4px; height: 4px;
+  background: rgba(255,255,255,0.3);
+  border-radius: 50%; flex-shrink: 0;
+}
+
+.sb-item:first-child::before { display: none; }
+
+/* ─── SECTIONS BASE ─── */
+section { padding: 120px 64px; }
+
+.section-tag {
+  font-size: 10px; font-weight: 600;
+  letter-spacing: 4px; text-transform: uppercase;
+  color: var(--blue); display: block; margin-bottom: 16px;
+}
+
+.section-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(2rem, 5vw, 3.5rem);
+  font-weight: 400; color: var(--black);
+  line-height: 1.1; margin-bottom: 16px;
+}
+
+.section-title em { font-style: italic; color: var(--blue); }
+
+.section-title.white { color: var(--white); }
+.section-title.white em { color: rgba(255,255,255,0.45); }
+
+.section-desc {
+  font-size: 13.5px; color: var(--gray);
+  max-width: 520px; line-height: 1.9;
+  margin-bottom: 56px;
+}
+
+.section-desc.white { color: rgba(255,255,255,0.5); }
+
+/* ─── SOBRE ─── */
+.sobre { background: var(--white); }
+
+.sobre-inner {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 80px; align-items: center;
+}
+
+.sobre-left {}
+
+.sobre-quote {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(1.4rem, 3vw, 2rem);
+  font-style: italic; color: var(--black);
+  line-height: 1.5; margin-bottom: 32px;
+  padding-left: 24px;
+  border-left: 3px solid var(--blue);
+}
+
+.sobre-text {
+  font-size: 13px; color: #666;
+  line-height: 1.9; margin-bottom: 16px;
+}
+
+.sobre-right {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2px; background: var(--gray-light);
+  border: 1px solid var(--gray-light);
+}
+
+.sobre-card {
+  background: var(--white);
+  padding: 32px 28px;
+  transition: all 0.3s ease;
+}
+
+.sobre-card:hover {
+  background: var(--black);
+}
+
+.sobre-card:hover .sc-num { color: rgba(255,255,255,0.1); }
+.sobre-card:hover .sc-title { color: var(--white); }
+.sobre-card:hover .sc-desc { color: rgba(255,255,255,0.45); }
+
+.sc-num {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 3rem; font-weight: 300;
+  color: var(--gray-light); line-height: 1;
+  margin-bottom: 12px; transition: color 0.3s;
+}
+
+.sc-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.1rem; font-weight: 600;
+  color: var(--black); margin-bottom: 8px;
+  transition: color 0.3s;
+}
+
+.sc-desc {
+  font-size: 12px; color: var(--gray);
+  line-height: 1.7; transition: color 0.3s;
+}
+
+/* ─── METODOLOGIA ─── */
+.metodologia { background: var(--black); }
+
+.method-intro {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 80px; align-items: end;
+  margin-bottom: 80px;
+}
+
+.method-steps {
+  display: flex; flex-direction: column; gap: 2px;
+}
+
+.method-step {
+  display: grid;
+  grid-template-columns: 56px 1fr;
+  gap: 0;
+  background: rgba(255,255,255,0.03);
+  border: 1px solid rgba(255,255,255,0.06);
+  transition: all 0.3s ease;
+  overflow: hidden;
+  cursor: default;
+}
+
+.method-step:hover {
+  background: var(--blue);
+  border-color: var(--blue);
+}
+
+.method-step:hover .ms-num { color: rgba(255,255,255,0.2); }
+.method-step:hover .ms-name { color: rgba(255,255,255,0.55); }
+.method-step:hover .ms-title { color: var(--white); }
+.method-step:hover .ms-desc { color: rgba(255,255,255,0.65); }
+
+.ms-num-col {
+  display: flex; align-items: center; justify-content: center;
+  padding: 24px 0;
+  border-right: 1px solid rgba(255,255,255,0.06);
+  transition: border-color 0.3s;
+}
+
+.method-step:hover .ms-num-col { border-color: rgba(255,255,255,0.1); }
+
+.ms-num {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.1rem; font-weight: 600;
+  color: rgba(255,255,255,0.15);
+  transition: color 0.3s;
+}
+
+.ms-content { padding: 20px 24px; }
+
+.ms-name {
+  font-size: 9px; font-weight: 600;
+  letter-spacing: 2.5px; text-transform: uppercase;
+  color: var(--blue); margin-bottom: 4px; display: block;
+  transition: color 0.3s;
+}
+
+.ms-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.05rem; font-weight: 600;
+  color: rgba(255,255,255,0.85);
+  margin-bottom: 4px; transition: color 0.3s;
+}
+
+.ms-desc {
+  font-size: 11.5px; color: rgba(255,255,255,0.35);
+  line-height: 1.7; transition: color 0.3s;
+}
+
+/* ─── SERVIÇOS ─── */
+.servicos { background: var(--off); }
+
+.servicos-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2px; background: var(--gray-light);
+  border: 1px solid var(--gray-light);
+  margin-bottom: 48px;
+}
+
+.servico-card {
+  background: var(--white);
+  padding: 40px 32px;
+  transition: all 0.3s ease;
+  position: relative; overflow: hidden;
+}
+
+.servico-card::after {
+  content: '';
+  position: absolute; bottom: 0; left: 0; right: 0;
+  height: 0; background: var(--blue);
+  transition: height 0.3s ease;
+}
+
+.servico-card:hover { transform: translateY(-4px); box-shadow: 0 20px 60px rgba(0,0,0,0.08); }
+.servico-card:hover::after { height: 3px; }
+
+.servico-card.featured { background: var(--black); }
+.servico-card.featured:hover { box-shadow: 0 20px 60px rgba(43,53,200,0.2); }
+
+.sv-icon { font-size: 28px; margin-bottom: 20px; }
+
+.sv-tag {
+  font-size: 9px; font-weight: 600;
+  letter-spacing: 2.5px; text-transform: uppercase;
+  color: var(--blue); margin-bottom: 10px; display: block;
+}
+
+.servico-card.featured .sv-tag { color: rgba(100,130,255,0.8); }
+
+.sv-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.3rem; font-weight: 600;
+  color: var(--black); margin-bottom: 12px;
+}
+
+.servico-card.featured .sv-title { color: var(--white); }
+
+.sv-desc {
+  font-size: 12px; color: #666; line-height: 1.8;
+  margin-bottom: 20px;
+}
+
+.servico-card.featured .sv-desc { color: rgba(255,255,255,0.45); }
+
+.sv-items {
+  list-style: none; display: flex; flex-direction: column; gap: 6px;
+}
+
+.sv-items li {
+  font-size: 11.5px; color: #555;
+  padding-left: 16px; position: relative; line-height: 1.5;
+}
+
+.servico-card.featured .sv-items li { color: rgba(255,255,255,0.55); }
+
+.sv-items li::before {
+  content: '→'; position: absolute; left: 0;
+  color: var(--blue); font-size: 10px; top: 2px;
+}
+
+.servico-card.featured .sv-items li::before { color: rgba(100,130,255,0.7); }
+
+/* ─── PARA QUEM ─── */
+.para-quem { background: var(--white); }
+
+.pq-inner {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 80px; align-items: center;
+}
+
+.pq-right {}
+
+.dor-list {
+  display: flex; flex-direction: column; gap: 2px;
+}
+
+.dor-item {
+  display: flex; align-items: flex-start; gap: 20px;
+  padding: 20px 24px;
+  border: 1px solid var(--gray-light);
+  transition: all 0.3s ease;
+}
+
+.dor-item:hover {
+  border-color: rgba(43,53,200,0.2);
+  background: var(--blue-pale);
+}
+
+.dor-check {
+  width: 24px; height: 24px;
+  background: var(--blue-pale);
+  border: 1px solid rgba(43,53,200,0.2);
+  display: flex; align-items: center; justify-content: center;
+  flex-shrink: 0; margin-top: 2px;
+  font-size: 11px; color: var(--blue); font-weight: 600;
+}
+
+.dor-text {
+  font-size: 13px; color: var(--black); line-height: 1.7;
+}
+
+.dor-text strong { font-weight: 500; color: var(--black); }
+
+/* ─── PACOTES ─── */
+.pacotes { background: var(--black); }
+
+.pacotes-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2px; background: rgba(255,255,255,0.06);
+  border: 1px solid rgba(255,255,255,0.06);
+  margin-bottom: 40px;
+}
+
+.pacote-card {
+  background: rgba(255,255,255,0.03);
+  padding: 40px 32px;
+  display: flex; flex-direction: column;
+  transition: all 0.3s ease;
+  position: relative;
+}
+
+.pacote-card:hover { background: rgba(255,255,255,0.06); }
+
+.pacote-card.destaque {
+  background: var(--blue);
+}
+
+.pacote-card.destaque:hover { background: var(--blue-mid); }
+
+.pk-badge {
+  font-size: 9px; font-weight: 600;
+  letter-spacing: 2px; text-transform: uppercase;
+  padding: 5px 12px; display: inline-block;
+  margin-bottom: 20px; align-self: flex-start;
+}
+
+.pk-badge.default { background: rgba(255,255,255,0.06); color: rgba(255,255,255,0.4); }
+.pk-badge.featured { background: rgba(255,255,255,0.2); color: var(--white); }
+.pk-badge.premium { background: rgba(255,255,255,0.04); color: rgba(255,255,255,0.3); }
+
+.pk-name {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.6rem; font-weight: 600;
+  color: rgba(255,255,255,0.85); margin-bottom: 6px;
+}
+
+.pacote-card.destaque .pk-name { color: var(--white); }
+
+.pk-tagline {
+  font-size: 12px; color: rgba(255,255,255,0.35);
+  line-height: 1.7; margin-bottom: 28px;
+  flex: 1;
+}
+
+.pacote-card.destaque .pk-tagline { color: rgba(255,255,255,0.6); }
+
+.pk-price {
+  display: flex; align-items: baseline; gap: 4px;
+  margin-bottom: 28px;
+}
+
+.pk-currency { font-size: 13px; color: rgba(255,255,255,0.4); font-weight: 500; }
+.pacote-card.destaque .pk-currency { color: rgba(255,255,255,0.6); }
+
+.pk-value {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 3rem; font-weight: 300;
+  color: rgba(255,255,255,0.85); line-height: 1;
+}
+
+.pacote-card.destaque .pk-value { color: var(--white); }
+
+.pk-period { font-size: 11px; color: rgba(255,255,255,0.3); }
+.pacote-card.destaque .pk-period { color: rgba(255,255,255,0.55); }
+
+.pk-list {
+  list-style: none; display: flex; flex-direction: column;
+  gap: 7px; margin-bottom: 28px;
+}
+
+.pk-list li {
+  font-size: 12px; color: rgba(255,255,255,0.5);
+  padding-left: 18px; position: relative; line-height: 1.5;
+}
+
+.pacote-card.destaque .pk-list li { color: rgba(255,255,255,0.8); }
+
+.pk-list li::before {
+  content: '✓'; position: absolute; left: 0;
+  color: rgba(255,255,255,0.2); font-size: 10px;
+  font-weight: 700; top: 2px;
+}
+
+.pacote-card.destaque .pk-list li::before { color: rgba(255,255,255,0.5); }
+
+.pk-btn {
+  padding: 14px 20px;
+  font-size: 10px; font-weight: 600;
+  letter-spacing: 2px; text-transform: uppercase;
+  font-family: 'Montserrat', sans-serif;
+  text-decoration: none; text-align: center;
+  transition: all 0.25s ease; display: block;
+  border: none; cursor: pointer;
+}
+
+.pk-btn.outline {
+  background: transparent;
+  color: rgba(255,255,255,0.5);
+  border: 1px solid rgba(255,255,255,0.12);
+}
+
+.pk-btn.outline:hover {
+  border-color: rgba(255,255,255,0.3);
+  color: var(--white);
+}
+
+.pk-btn.solid {
+  background: var(--white); color: var(--blue);
+}
+
+.pk-btn.solid:hover { background: var(--off); }
+
+/* ─── CTA CENTRAL ─── */
+.cta-section {
+  background: var(--blue);
+  padding: 100px 64px;
+  text-align: center;
+  position: relative; overflow: hidden;
+}
+
+.cta-section::before {
+  content: '';
+  position: absolute; inset: 0;
+  background:
+    radial-gradient(ellipse at 30% 50%, rgba(255,255,255,0.06) 0%, transparent 50%),
+    radial-gradient(ellipse at 70% 50%, rgba(0,0,0,0.15) 0%, transparent 50%);
+}
+
+.cta-eyebrow {
+  font-size: 10px; font-weight: 500;
+  letter-spacing: 5px; text-transform: uppercase;
+  color: rgba(255,255,255,0.4); margin-bottom: 20px;
+  position: relative; z-index: 1; display: block;
+}
+
+.cta-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(2rem, 5vw, 4rem);
+  font-weight: 300; color: var(--white);
+  line-height: 1.1; margin-bottom: 20px;
+  position: relative; z-index: 1;
+}
+
+.cta-title em { font-style: italic; color: rgba(255,255,255,0.45); }
+
+.cta-desc {
+  font-size: 13.5px; color: rgba(255,255,255,0.55);
+  max-width: 480px; margin: 0 auto 40px;
+  line-height: 1.9; position: relative; z-index: 1;
+}
+
+.cta-actions {
+  display: flex; gap: 16px; justify-content: center;
+  flex-wrap: wrap; position: relative; z-index: 1;
+}
+
+.btn-white {
+  background: var(--white); color: var(--blue);
+  padding: 16px 36px;
+  font-size: 11px; font-weight: 600;
+  letter-spacing: 2px; text-transform: uppercase;
+  text-decoration: none; transition: all 0.25s ease;
+  display: inline-flex; align-items: center; gap: 10px;
+}
+
+.btn-white:hover { background: var(--off); transform: translateY(-2px); }
+
+.btn-ghost-white {
+  background: transparent; color: rgba(255,255,255,0.7);
+  padding: 16px 32px;
+  font-size: 11px; font-weight: 500;
+  letter-spacing: 2px; text-transform: uppercase;
+  text-decoration: none; transition: all 0.25s ease;
+  border: 1px solid rgba(255,255,255,0.25);
+  display: inline-flex; align-items: center; gap: 10px;
+}
+
+.btn-ghost-white:hover { border-color: rgba(255,255,255,0.5); color: var(--white); }
+
+/* ─── FOOTER ─── */
+footer {
+  background: var(--black);
+  padding: 72px 64px 40px;
+}
+
+.footer-top {
+  display: grid;
+  grid-template-columns: 1.5fr 1fr 1fr 1fr;
+  gap: 60px; padding-bottom: 56px;
+  border-bottom: 1px solid rgba(255,255,255,0.06);
+  margin-bottom: 36px;
+}
+
+.footer-brand {}
+
+.footer-logo {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.2rem; font-weight: 600;
+  letter-spacing: 4px; text-transform: uppercase;
+  color: var(--white); margin-bottom: 16px;
+  display: flex; align-items: center; gap: 10px;
+}
+
+.footer-logo-symbol { width: 28px; height: 28px; opacity: 0.6; }
+
+.footer-tagline {
+  font-size: 12px; color: rgba(255,255,255,0.35);
+  line-height: 1.8; max-width: 260px; margin-bottom: 24px;
+}
+
+.footer-social {
+  display: flex; gap: 12px;
+}
+
+.social-link {
+  width: 36px; height: 36px;
+  background: rgba(255,255,255,0.05);
+  border: 1px solid rgba(255,255,255,0.08);
+  display: flex; align-items: center; justify-content: center;
+  color: rgba(255,255,255,0.4); font-size: 14px;
+  text-decoration: none; transition: all 0.25s ease;
+}
+
+.social-link:hover {
+  background: var(--blue);
+  border-color: var(--blue);
+  color: var(--white);
+}
+
+.footer-col-title {
+  font-size: 10px; font-weight: 600;
+  letter-spacing: 3px; text-transform: uppercase;
+  color: rgba(255,255,255,0.5);
+  margin-bottom: 20px; display: block;
+}
+
+.footer-links {
+  list-style: none; display: flex;
+  flex-direction: column; gap: 10px;
+}
+
+.footer-links a {
+  font-size: 12.5px; color: rgba(255,255,255,0.3);
+  text-decoration: none; transition: color 0.25s;
+  line-height: 1.5;
+}
+
+.footer-links a:hover { color: var(--white); }
+
+.footer-contact p {
+  font-size: 12.5px; color: rgba(255,255,255,0.3);
+  line-height: 1.8; margin-bottom: 8px;
+}
+
+.footer-contact a {
+  color: rgba(255,255,255,0.5);
+  text-decoration: none; transition: color 0.25s;
+}
+
+.footer-contact a:hover { color: var(--white); }
+
+.footer-bottom {
+  display: flex; justify-content: space-between;
+  align-items: center; flex-wrap: wrap; gap: 16px;
+}
+
+.footer-copy {
+  font-size: 11px; color: rgba(255,255,255,0.2);
+  letter-spacing: 0.5px;
+}
+
+.footer-verse {
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic; font-size: 12px;
+  color: rgba(255,255,255,0.2);
+}
+
+/* ─── WHATSAPP FLOAT ─── */
+.whatsapp-float {
+  position: fixed; bottom: 32px; right: 32px;
+  width: 56px; height: 56px;
+  background: #25D366;
+  border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  text-decoration: none; z-index: 300;
+  box-shadow: 0 4px 20px rgba(37,211,102,0.4);
+  transition: all 0.3s ease;
+}
+
+.whatsapp-float:hover {
+  transform: scale(1.1);
+  box-shadow: 0 8px 32px rgba(37,211,102,0.5);
+}
+
+.whatsapp-float svg { width: 28px; height: 28px; }
+
+/* ─── MOBILE NAV ─── */
+.mobile-menu {
+  position: fixed; inset: 0;
+  background: var(--black);
+  z-index: 190;
+  display: flex; flex-direction: column;
+  align-items: center; justify-content: center;
+  gap: 32px;
+  transform: translateX(100%);
+  transition: transform 0.4s ease;
+}
+
+.mobile-menu.open { transform: translateX(0); }
+
+.mobile-menu a {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 2rem; font-weight: 400;
+  color: rgba(255,255,255,0.7);
+  text-decoration: none; transition: color 0.25s;
+}
+
+.mobile-menu a:hover { color: var(--white); }
+
+/* ─── RESPONSIVE ─── */
+@media (max-width: 1024px) {
+  .footer-top { grid-template-columns: 1fr 1fr; gap: 40px; }
+}
+
+@media (max-width: 860px) {
+  section { padding: 80px 28px; }
+  .hero { padding: 0 28px 64px; }
+  .statement-bar { padding: 16px 28px; gap: 20px; }
+  .sobre-inner { grid-template-columns: 1fr; gap: 48px; }
+  .method-intro { grid-template-columns: 1fr; gap: 40px; }
+  .servicos-grid { grid-template-columns: 1fr; }
+  .pq-inner { grid-template-columns: 1fr; gap: 48px; }
+  .pacotes-grid { grid-template-columns: 1fr; }
+  .cta-section { padding: 72px 28px; }
+  footer { padding: 56px 28px 32px; }
+  .footer-top { grid-template-columns: 1fr; gap: 32px; }
+  .footer-bottom { flex-direction: column; text-align: center; }
+  .nav-links { display: none; }
+  .nav-toggle { display: block; }
+  nav { padding: 0 28px; }
+  .hero-scroll { display: none; }
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav id="navbar">
+  <a href="#" class="nav-logo">
+    <svg class="nav-logo-symbol" viewBox="0 0 40 40" fill="none">
+      <circle cx="20" cy="20" r="18" stroke="white" stroke-width="1.5" opacity="0.4"/>
+      <path d="M20 4C20 4,10 10,10 20C10 30,20 36,20 36C20 36,15 28,17.5 21C20 14,26 10,20 4Z" fill="white" opacity="0.7"/>
+    </svg>
+    POSE VIRTUOSA
+  </a>
+  <ul class="nav-links">
+    <li><a href="#sobre">Sobre</a></li>
+    <li><a href="#metodologia">Método</a></li>
+    <li><a href="#servicos">Serviços</a></li>
+    <li><a href="#pacotes">Pacotes</a></li>
+  </ul>
+  <a href="https://wa.me/message/4ZUEKYMKNRZCP1" target="_blank" class="nav-cta">Falar com a Pose</a>
+  <button class="nav-toggle" onclick="toggleMenu()" aria-label="Menu">☰</button>
+</nav>
+
+<!-- MOBILE MENU -->
+<div class="mobile-menu" id="mobileMenu">
+  <a href="#sobre" onclick="toggleMenu()">Sobre</a>
+  <a href="#metodologia" onclick="toggleMenu()">Método</a>
+  <a href="#servicos" onclick="toggleMenu()">Serviços</a>
+  <a href="#pacotes" onclick="toggleMenu()">Pacotes</a>
+  <a href="https://wa.me/message/4ZUEKYMKNRZCP1" target="_blank">Falar com a Pose</a>
+</div>
+
+<!-- HERO -->
+<section class="hero" id="home">
+  <div class="hero-bg"></div>
+  <div class="hero-grid-lines"></div>
+
+  <svg class="hero-symbol" viewBox="0 0 400 400" fill="none">
+    <circle cx="200" cy="200" r="190" stroke="white" stroke-width="2"/>
+    <path d="M200 20C200 20,100 80,100 200C100 320,200 380,200 380C200 380,150 300,175 210C200 120,260 80,200 20Z" fill="white"/>
+  </svg>
+
+  <div class="hero-eyebrow">Pose Virtuosa · Marketing Estratégico</div>
+
+  <h1>
+    Posicionamento<br>
+    que <em>vende.</em><br>
+    <span class="highlight">De verdade.</span>
+  </h1>
+
+  <div class="hero-divider"></div>
+
+  <p class="hero-desc">A empresa de marketing e estratégia comercial para a empresária cristã que trabalha muito mas ainda não está sendo vista, lembrada e escolhida no digital.</p>
+
+  <div class="hero-actions">
+    <a href="https://wa.me/message/4ZUEKYMKNRZCP1" target="_blank" class="btn-primary">
+      Quero ser vista e vender →
+    </a>
+    <a href="#metodologia" class="btn-secondary">
+      Conhecer o método
+    </a>
+  </div>
+
+  <div class="hero-scroll">Scroll</div>
+</section>
+
+<!-- STATEMENT BAR -->
+<div class="statement-bar">
+  <span class="sb-item">Marketing sem venda não é marketing</span>
+  <span class="sb-item">Posicionamento com verdade</span>
+  <span class="sb-item">Metodologia das 5 Virtudes</span>
+  <span class="sb-item">Para a empresária cristã</span>
+</div>
+
+<!-- SOBRE -->
+<section class="sobre" id="sobre">
+  <div class="sobre-inner">
+    <div class="sobre-left">
+      <span class="section-tag">Sobre a Pose</span>
+      <div class="section-title">A marca nasce<br><em>de dentro para fora</em></div>
+
+      <blockquote class="sobre-quote">
+        "O que a empresa é no físico é o que ela aparece no digital. Porque não dá para viver num digital de mentira."
+      </blockquote>
+
+      <p class="sobre-text">A Pose Virtuosa existe para a empresária cristã que posta todos os dias mas não vende. Que tem um produto excelente mas ninguém conhece. Que trabalha muito mas o faturamento não reflete o esforço.</p>
+
+      <p class="sobre-text">Não somos uma agência comum de social media. Somos uma empresa de posicionamento e estratégia comercial — com um método único construído sobre princípios bíblicos reais. Cada entrega tem intenção. Cada estratégia tem propósito.</p>
+    </div>
+
+    <div class="sobre-right">
+      <div class="sobre-card">
+        <div class="sc-num">01</div>
+        <div class="sc-title">Método próprio</div>
+        <p class="sc-desc">A Metodologia das 5 Virtudes — única no mercado.</p>
+      </div>
+      <div class="sobre-card">
+        <div class="sc-num">02</div>
+        <div class="sc-title">Verdade no digital</div>
+        <p class="sc-desc">O que você é no físico é o que aparece nas redes.</p>
+      </div>
+      <div class="sobre-card">
+        <div class="sc-num">03</div>
+        <div class="sc-title">Resultado real</div>
+        <p class="sc-desc">Posicionamento que não converte não serve.</p>
+      </div>
+      <div class="sobre-card">
+        <div class="sc-num">04</div>
+        <div class="sc-title">Fé como método</div>
+        <p class="sc-desc">Princípios cristãos aplicados com estratégia.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- METODOLOGIA -->
+<section class="metodologia" id="metodologia">
+  <div class="method-intro">
+    <div>
+      <span class="section-tag">O Método</span>
+      <div class="section-title white">Metodologia das<br><em>5 Virtudes</em></div>
+    </div>
+    <p class="section-desc white">Uma jornada inspirada em mulheres da Bíblia, desenhada para transformar propósito em posicionamento e posicionamento em faturamento. Você não contrata posts — você entra numa jornada com método e resultado claro.</p>
+  </div>
+
+  <div class="method-steps">
+    <div class="method-step">
+      <div class="ms-num-col"><span class="ms-num">01</span></div>
+      <div class="ms-content">
+        <span class="ms-name">Ester</span>
+        <div class="ms-title">Posicionamento Intencional</div>
+        <p class="ms-desc">Diagnóstico, identidade de marca, público ideal e presença digital alinhada com quem você realmente é.</p>
+      </div>
+    </div>
+    <div class="method-step">
+      <div class="ms-num-col"><span class="ms-num">02</span></div>
+      <div class="ms-content">
+        <span class="ms-name">Débora</span>
+        <div class="ms-title">Estrutura e Liderança</div>
+        <p class="ms-desc">Orientação estratégica para que sua empresa tenha direção clara, processos e base sólida para crescer.</p>
+      </div>
+    </div>
+    <div class="method-step">
+      <div class="ms-num-col"><span class="ms-num">03</span></div>
+      <div class="ms-content">
+        <span class="ms-name">Rute</span>
+        <div class="ms-title">Constância e Execução</div>
+        <p class="ms-desc">Estratégia executada com ritmo e consistência — conteúdo que educa, posiciona e converte todos os meses.</p>
+      </div>
+    </div>
+    <div class="method-step">
+      <div class="ms-num-col"><span class="ms-num">04</span></div>
+      <div class="ms-content">
+        <span class="ms-name">Abigail</span>
+        <div class="ms-title">Expansão Comercial</div>
+        <p class="ms-desc">Processo comercial ativo — social selling, prospecção e fechamento para transformar audiência em faturamento.</p>
+      </div>
+    </div>
+    <div class="method-step">
+      <div class="ms-num-col"><span class="ms-num">05</span></div>
+      <div class="ms-content">
+        <span class="ms-name">Priscila</span>
+        <div class="ms-title">Autoridade e Legado</div>
+        <p class="ms-desc">Consolidação como referência no nicho — cases publicados, conteúdo de autoridade e marca reconhecida.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVIÇOS -->
+<section class="servicos" id="servicos">
+  <span class="section-tag">O que entregamos</span>
+  <div class="section-title">Serviços que <em>geram resultado</em></div>
+  <p class="section-desc">Marketing completo e comercial estruturado — porque presença sem venda não serve. Trabalhamos as duas frentes juntas.</p>
+
+  <div class="servicos-grid">
+    <div class="servico-card">
+      <div class="sv-icon">📱</div>
+      <span class="sv-tag">Marketing Digital</span>
+      <div class="sv-title">Presença que Posiciona</div>
+      <p class="sv-desc">Estratégia, conteúdo e gestão das redes com foco em posicionamento e conversão.</p>
+      <ul class="sv-items">
+        <li>Estratégia de conteúdo mensal</li>
+        <li>Copywriting estratégico</li>
+        <li>Design e direção criativa</li>
+        <li>Gestão de redes sociais</li>
+        <li>Relatório mensal de performance</li>
+      </ul>
+    </div>
+
+    <div class="servico-card featured">
+      <div class="sv-icon">💼</div>
+      <span class="sv-tag">Comercial</span>
+      <div class="sv-title">Processo que Converte</div>
+      <p class="sv-desc">Estrutura comercial completa para transformar audiência em clientes e clientes em faturamento.</p>
+      <ul class="sv-items">
+        <li>Social Selling estratégico</li>
+        <li>SDR — prospecção ativa</li>
+        <li>Apoio no fechamento</li>
+        <li>Follow-up e cadência</li>
+        <li>Indicadores e dashboards</li>
+      </ul>
+    </div>
+
+    <div class="servico-card">
+      <div class="sv-icon">📊</div>
+      <span class="sv-tag">Tráfego & Automação</span>
+      <div class="sv-title">Escala com Inteligência</div>
+      <p class="sv-desc">Campanhas pagas e automações que trabalham mesmo quando você não está presente.</p>
+      <ul class="sv-items">
+        <li>Setup e gestão de tráfego pago</li>
+        <li>Criativos para anúncios</li>
+        <li>Funis de captação e conversão</li>
+        <li>Automação de WhatsApp e e-mail</li>
+        <li>Integração com CRM</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- PARA QUEM -->
+<section class="para-quem" id="para-quem">
+  <div class="pq-inner">
+    <div>
+      <span class="section-tag">Para quem é</span>
+      <div class="section-title">A Pose é para <em>você</em> se...</div>
+      <p class="section-desc">A Pose não é para todo mundo. É para a empresária cristã específica — aquela que reconhece pelo menos uma dessas situações.</p>
+      <a href="https://wa.me/message/4ZUEKYMKNRZCP1" target="_blank" class="btn-primary" style="margin-top: 8px;">
+        Me reconheço aqui →
+      </a>
+    </div>
+
+    <div class="pq-right">
+      <div class="dor-list">
+        <div class="dor-item">
+          <div class="dor-check">✓</div>
+          <p class="dor-text">Você <strong>posta todo dia mas não vende</strong> — esforço sem retorno visível</p>
+        </div>
+        <div class="dor-item">
+          <div class="dor-check">✓</div>
+          <p class="dor-text">Você <strong>trabalha muito mas o faturamento não cresce</strong> na proporção</p>
+        </div>
+        <div class="dor-item">
+          <div class="dor-check">✓</div>
+          <p class="dor-text">Seu <strong>produto é bom mas ninguém te conhece</strong> no digital</p>
+        </div>
+        <div class="dor-item">
+          <div class="dor-check">✓</div>
+          <p class="dor-text">Você quer crescer <strong>sem abrir mão dos seus valores cristãos</strong></p>
+        </div>
+        <div class="dor-item">
+          <div class="dor-check">✓</div>
+          <p class="dor-text">Você precisa de <strong>estratégia real</strong> — não de mais posts bonitos</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PACOTES -->
+<section class="pacotes" id="pacotes">
+  <span class="section-tag">Investimento</span>
+  <div class="section-title white">Escolha sua <em>jornada</em></div>
+  <p class="section-desc white" style="margin-bottom: 56px;">Contrato mínimo de 6 meses — porque resultado de posicionamento não acontece em 30 dias. Cada pacote é uma etapa da Metodologia das 5 Virtudes.</p>
+
+  <div class="pacotes-grid">
+    <div class="pacote-card">
+      <span class="pk-badge default">Entrada</span>
+      <div class="pk-name">Presença</div>
+      <p class="pk-tagline">Para quem precisa se posicionar e aparecer com consistência e identidade.</p>
+      <div class="pk-price">
+        <span class="pk-currency">R$</span>
+        <span class="pk-value">3.000</span>
+        <span class="pk-period">/mês</span>
+      </div>
+      <ul class="pk-list">
+        <li>Estratégia de conteúdo mensal</li>
+        <li>Até 20 posts por mês</li>
+        <li>Copy + design + publicação</li>
+        <li>Relatório mensal</li>
+        <li>1 reunião de alinhamento</li>
+      </ul>
+      <a href="https://wa.me/message/4ZUEKYMKNRZCP1" target="_blank" class="pk-btn outline">Quero este pacote</a>
+    </div>
+
+    <div class="pacote-card destaque">
+      <span class="pk-badge featured">Mais contratado</span>
+      <div class="pk-name">Crescimento</div>
+      <p class="pk-tagline">Marketing completo + comercial ativo. A jornada completa de Ester a Abigail.</p>
+      <div class="pk-price">
+        <span class="pk-currency">R$</span>
+        <span class="pk-value">4.500</span>
+        <span class="pk-period">/mês</span>
+      </div>
+      <ul class="pk-list">
+        <li>Tudo do pacote Presença</li>
+        <li>Até 26 posts + 4 Reels/mês</li>
+        <li>Social Selling + SDR ativo</li>
+        <li>Apoio no fechamento</li>
+        <li>Orientação estratégica</li>
+        <li>Reuniões quinzenais</li>
+      </ul>
+      <a href="https://wa.me/message/4ZUEKYMKNRZCP1" target="_blank" class="pk-btn solid">Este é o meu pacote</a>
+    </div>
+
+    <div class="pacote-card">
+      <span class="pk-badge premium">Escala</span>
+      <div class="pk-name">Autoridade</div>
+      <p class="pk-tagline">Operação 360º — marketing, comercial, tráfego e automação integrados.</p>
+      <div class="pk-price">
+        <span class="pk-currency">R$</span>
+        <span class="pk-value">6.500</span>
+        <span class="pk-period">/mês</span>
+      </div>
+      <ul class="pk-list">
+        <li>Tudo do pacote Crescimento</li>
+        <li>Gestão de tráfego pago</li>
+        <li>Automação completa + funis</li>
+        <li>Criativos para anúncios</li>
+        <li>Conteúdo de autoridade</li>
+        <li>Jornada completa das 5 Virtudes</li>
+      </ul>
+      <a href="https://wa.me/message/4ZUEKYMKNRZCP1" target="_blank" class="pk-btn outline">Quero a operação completa</a>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-section" id="contato">
+  <span class="cta-eyebrow">Pronta para começar?</span>
+  <div class="cta-title">Se você chegou até aqui,<br>a Pose foi feita <em>para você.</em></div>
+  <p class="cta-desc">Vamos conversar sobre onde sua empresa está e onde ela pode chegar. Sem compromisso — só uma conversa honesta sobre o seu negócio.</p>
+  <div class="cta-actions">
+    <a href="https://wa.me/message/4ZUEKYMKNRZCP1" target="_blank" class="btn-white">
+      Falar com a Pose →
+    </a>
+    <a href="https://www.instagram.com/posevirtuosa/" target="_blank" class="btn-ghost-white">
+      Ver no Instagram
+    </a>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-top">
+    <div class="footer-brand">
+      <div class="footer-logo">
+        <svg class="footer-logo-symbol" viewBox="0 0 40 40" fill="none">
+          <circle cx="20" cy="20" r="18" stroke="white" stroke-width="1.5"/>
+          <path d="M20 4C20 4,10 10,10 20C10 30,20 36,20 36C20 36,15 28,17.5 21C20 14,26 10,20 4Z" fill="white"/>
+        </svg>
+        POSE VIRTUOSA
+      </div>
+      <p class="footer-tagline">Marketing que posiciona e vende. Para a empresária cristã que quer crescer com verdade e resultado.</p>
+      <div class="footer-social">
+        <a href="https://www.instagram.com/posevirtuosa/" target="_blank" class="social-link" title="Instagram">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+        </a>
+        <a href="https://wa.me/message/4ZUEKYMKNRZCP1" target="_blank" class="social-link" title="WhatsApp">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+        </a>
+      </div>
+    </div>
+
+    <div>
+      <span class="footer-col-title">Navegação</span>
+      <ul class="footer-links">
+        <li><a href="#sobre">Sobre a Pose</a></li>
+        <li><a href="#metodologia">Metodologia</a></li>
+        <li><a href="#servicos">Serviços</a></li>
+        <li><a href="#pacotes">Pacotes</a></li>
+        <li><a href="#contato">Contato</a></li>
+      </ul>
+    </div>
+
+    <div>
+      <span class="footer-col-title">Serviços</span>
+      <ul class="footer-links">
+        <li><a href="#servicos">Marketing Digital</a></li>
+        <li><a href="#servicos">Comercial & Vendas</a></li>
+        <li><a href="#servicos">Tráfego Pago</a></li>
+        <li><a href="#servicos">Automação</a></li>
+        <li><a href="#servicos">Estratégia</a></li>
+      </ul>
+    </div>
+
+    <div class="footer-contact">
+      <span class="footer-col-title">Contato</span>
+      <p><a href="https://www.instagram.com/posevirtuosa/" target="_blank">@posevirtuosa</a></p>
+      <p><a href="https://wa.me/message/4ZUEKYMKNRZCP1" target="_blank">Falar pelo WhatsApp</a></p>
+      <p>Santos, São Paulo — Brasil</p>
+    </div>
+  </div>
+
+  <div class="footer-bottom">
+    <p class="footer-copy">© 2026 Pose Virtuosa. Todos os direitos reservados.</p>
+    <p class="footer-verse">"Tudo o que fizerem, façam de todo o coração, como para o Senhor." — Col 3:23</p>
+  </div>
+</footer>
+
+<!-- WHATSAPP FLOAT -->
+<a href="https://wa.me/message/4ZUEKYMKNRZCP1" target="_blank" class="whatsapp-float" title="Falar no WhatsApp">
+  <svg viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+</a>
+
+<script>
+  // Nav scroll
+  window.addEventListener('scroll', () => {
+    const nav = document.getElementById('navbar');
+    nav.classList.toggle('scrolled', window.scrollY > 40);
+  });
+
+  // Mobile menu
+  function toggleMenu() {
+    document.getElementById('mobileMenu').classList.toggle('open');
+  }
+
+  // Fade in on scroll
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.style.opacity = '1';
+        e.target.style.transform = 'translateY(0)';
+      }
+    });
+  }, { threshold: 0.1 });
+
+  document.querySelectorAll('.sobre-card, .method-step, .servico-card, .dor-item, .pacote-card').forEach(el => {
+    el.style.opacity = '0';
+    el.style.transform = 'translateY(20px)';
+    el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+    observer.observe(el);
+  });
+</script>
+</body>
+</html>
